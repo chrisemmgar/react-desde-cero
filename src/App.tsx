@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import { Button } from './components';
+import { Button, ButtonDec } from './components';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -9,9 +9,20 @@ function App() {
     setCount((count) => count + 1)
   };
 
+  const increaseLocalCount = () => {
+    if (count > 0) {
+      setCount((count) => count - 1)
+    }
+  }
+
   return (
     <>
-      <Button label={`Count is ${count}`} parentMethod={countMore} />
+      <div>
+        <Button label={`Count is ${count}`} parentMethod={countMore} />
+      </div>
+      <div style={{padding: '3rem'}}>
+        <ButtonDec label={`Count is ${count}`} parentMethod={increaseLocalCount} />
+      </div>
     </>
   )
 }
